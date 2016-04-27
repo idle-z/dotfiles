@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for i in `acpi -b | cut -d"," -f2`;
+do
+  EXPRESSION=${EXPRESSION}${i:0:${#i}-1}\ +\ ;
+done;
+echo "print(int((${EXPRESSION}0) / $(acpi -b | wc -l)))" | python;

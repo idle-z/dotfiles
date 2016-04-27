@@ -1,0 +1,38 @@
+#!/bin/bash
+
+BATT=$(/home/idle_zealot/script/batt-percent)
+
+if [ $BATT -ge 85 ]
+then
+  echo 
+elif [ $BATT -ge 65 ]
+then
+  echo 
+elif [ $BATT -ge 35 ]
+then
+  echo 
+elif [ $BATT -ge 15 ]
+then
+  echo 
+else
+  echo 
+fi
+
+echo
+
+# Colors
+i=$(acpi -b | cut -d" " -f3 | head -1)
+if [ "$i" = "Charging," ]
+then
+  echo "#009688"
+elif [ "$i" = "Unknown," ]
+then
+  echo "#03A9F4"
+elif [ "$i" = "Full," ]
+then
+  echo "#03A9F4"
+elif [ $BATT -lt 15 ]
+then
+  echo "#E91E63"
+fi
+
